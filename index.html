@@ -40,46 +40,128 @@
                <a class="btn btn-large btn-success" href="sign-up.html"><span class="btn-label">Get the lastest updates on the gauntlt project</span></a> 
             </p>
          </div>
-         <p class="text-info lead">Gauntlt unites devs and ops and security work together to build rugged software.  It is built to facilitate testing and communication between groups and create actionable tests that can be hooked into your continuous integration systems.</p>
+         <p class="text-info lead">Gauntlt provides hooks to a variety of security tools and puts them within reach of security, dev and ops teams to collaborate to build rugged software.  It is built to facilitate testing and communication between groups and create actionable tests that can be hooked into your deploy and testing processes.</p>
          <div class="row">
             <div class="span4">
-               <div class="well">
+              <div class="well">
                   <h4>Features</h4>
                   <ul>
-                    <li>Gauntlt attacks are written in easy-to-read language</li>
-                    <li>Security tool support comes built-in</li>
-                    <li>Integrated security tools include: sqlmap, nmap, sslyze and more</li>
-                    <li>Easy to hook into your org's testing tools and processes</li>
+                    <li>Gauntlt attacks are written in a easy-to-read language</li>
+                    <li>Easily hooks into your org's testing tools and processes</li>
+                    <li>Security tool adapters come with gauntlt</li>
+                    <li>Uses unix standard error and standard out to pass status</li>
                   </ul>
-               </div>
+              </div>
             </div>
-            <div class="span4" id="getting-started">
+            <div class="span4">
                <div class="well">
-                  <h4>How do I get started?</h4>
-                  <div>$ gem install gauntlt</div>
-                  <div># download <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">example attacks</a></div>
-                  <div># now you are ready to run the gauntlt</div>
-                  <div>$ gauntlt</div>
+                 <h4>Gauntlt includes attack adapters for these tools:</h4>
+                 <ul>
+                   <li><a href="http://curl.haxx.se">curl</a></li>
+                   <li><a href="http://nmap.org">nmap</a></li>
+                   <li><a href="https://github.com/iSECPartners/sslyze">sslyze</a></li>
+                   <li><a href="http://sqlmap.org">sqlmap</a></li>
+                   <li><a href="https://github.com/mozilla/Garmr">Garmr</a></li>
+                   <li>generic command line</li>
+                   <li>more coming soon</li>
+                 </ul>
                </div>
             </div>
             <div class="span4">
                <div class="well">
                   <h4>Join the gauntlt mailing list</h4>
+                  <p>Stay in the loop with the latest news for gauntlt.</p>
+                  <br>
                   <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a> 
                </div>
             </div>
          </div>
-         <p class="text-info lead">
-            That's great and all, but now I need to write some attack files.  Watch this video to help you get started:
-            <br />
-            <object width="625" height="344">
-               <param name="movie" value="http://www.youtube.com/v/hMpVQKcyGSE&amp;hl=en&amp;fs=1" />
-               </param>
-               <param name="allowFullScreen" value="true" />
-               </param>
-               <embed src="http://www.youtube.com/v/hMpVQKcyGSE&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed>
-            </object>
-         </p>
+
+
+         <p class="text-info lead">There are two ways to get started with gauntlt.  You can use the gem install method which will require you to download and setup the security tools (don't worry gauntlt walks you through it) or you can use the Gauntlt Starter Kit which is a vagrant script that will bootstrap the tools for you automagically.</p>
+
+         <div class="row">
+            <div class="span6" id="getting-started">
+               <div class="well">
+		<h4>Get started using in 3 easy steps</h4>
+		<ol>
+		  <li>
+		    <p>Install the gem</p>
+		    <pre><code>
+$ gem install gauntlt
+		    </code></pre>
+		  </li>
+		
+		  <li>
+		    <p>Download <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">example attacks</a> and customize.  Here is a very simple network attack using the nmap adapter.</p>
+
+		<pre><code>
+# nmap-simple.attack
+Feature: simple nmap attack (sanity check)
+
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name | value |
+      | hostname | example.com |
+
+  Scenario: Verify server is available on standard web ports
+    When I launch an "nmap" attack with:
+      """
+      nmap -p 80 <hostname>
+      """
+    Then the output should contain:
+      """
+      80/tcp open http
+      """
+		</code></pre>
+		</li>
+		<li>
+		<p>Run gauntlt to launch the attack defined above</p>
+
+		<pre><code>
+$ gauntlt
+  # equivalent to gauntlt ./**/*.attack
+  # you can also specify one or more paths yourself:
+$ gauntlt my_attacks/nmap-simple.attack 
+  # other commands to help
+$ gauntlt --list
+$ gauntlt --help
+		</code></pre>
+
+		<p>For more attack examples, refer to the <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">examples</a>.</p>
+		</li>
+		</ol>
+               </div>
+            </div>
+            <div class="span6" id="getting-started">
+               <div class="well">
+                  <h4>Get started with the Gauntlt Starter Kit</h4>
+                  <p>If you don't want to bother with installing ruby on your local box or you dont want to bother setting up all the security tools that gauntlt hooks for running tests, then this is the way to go.  Simply follow along with the video and you can have a running virtual machine that includes gauntlt's dependencies, gauntlt itself and a variety of security tools that gauntlt uses to run its tests.</p>
+<p>Watch this video to help you get started:
+                  <br />
+		    <object width="425" height="344">
+		       <param name="movie" value="http://www.youtube.com/v/hMpVQKcyGSE&amp;hl=en&amp;fs=1" />
+		       </param>
+		       <param name="allowFullScreen" value="true" />
+		       </param>
+		       <embed src="http://www.youtube.com/v/hMpVQKcyGSE&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed>
+		    </object>
+                  </p>          
+               </div>
+            </div>
+
+            <div class="span6">
+               <div class="well">
+                  <h4>Did we mention the gauntlt mailing list?</h4>
+                  <p>Stay in the loop with the latest news and updates for gauntlt.</p>
+                  <br>
+                  <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a> 
+               </div>
+            </div>
+
+         </div>
+
          <p class="text-info lead">Security testing is usually done on the auditors' schedule and that testing output isn't always actionable. Because of this, often regressions for fixed issues find their way back into the code. Thats not good. It should be different.</p>
          <div class="well">
             <p>Copyright 2012 - MIT License | <a href="https://github.com/gauntlt/gauntlt">GitHub Repo for GAUNTLT</a></p>
