@@ -79,7 +79,7 @@ Feature: simple nmap attack (sanity check)
       | name     | value       |
       | hostname | example.com |
 
-  Scenario: Verify server is available on standard web ports
+  Scenario: Check standard web ports
     When I launch an "nmap" attack with:
       """
       nmap -p 80 <hostname>
