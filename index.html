@@ -69,8 +69,26 @@ $ gem install gauntlt
 		  <li>
 		    <p>Download <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">example attacks</a> and customize.  Here is a very simple network attack using the nmap adapter.</p>
 
-    <script src="https://gist.github.com/4006251.js?file=nmap-simple.md"></script>
+        <pre class="sh_gherkin_en">
+# nmap-simple.attack
+Feature: simple nmap attack (sanity check)
 
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name | value |
+      | hostname | example.com |
+
+  Scenario: Verify server is available on standard web ports
+    When I launch an "nmap" attack with:
+      """
+      nmap -p 80 <hostname>
+      """
+    Then the output should contain:
+      """
+      80/tcp open http
+      """
+    </pre>
 		</li>
 		<li>
 		<p>Run gauntlt to launch the attack defined above</p>
