@@ -11,7 +11,7 @@ title: GAUNTLT - Go Ahead, Be Mean To Your Code - Security and Rugged Testing
             <h1>GAUNTLT</h1>
             <p>GO AHEAD, BE MEAN TO YOUR CODE</p>
             <p>
-               <a class="btn btn-large btn-success" href="sign-up.html"><span class="btn-label">Get the lastest updates on the gauntlt project</span></a> 
+               <a class="btn btn-large btn-success" href="sign-up.html"><span class="btn-label">Get the lastest updates on the gauntlt project</span></a>
             </p>
          </div>
          <p class="text-info lead">Gauntlt provides hooks to a variety of security tools and puts them within reach of security, dev and ops teams to collaborate to build rugged software.  It is built to facilitate testing and communication between groups and create actionable tests that can be hooked into your deploy and testing processes.</p>
@@ -46,7 +46,7 @@ title: GAUNTLT - Go Ahead, Be Mean To Your Code - Security and Rugged Testing
                   <h4>Join the gauntlt mailing list</h4>
                   <p>Stay in the loop with the latest news for gauntlt.</p>
                   <br>
-                  <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a> 
+                  <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a>
                </div>
             </div>
          </div>
@@ -65,30 +65,12 @@ title: GAUNTLT - Go Ahead, Be Mean To Your Code - Security and Rugged Testing
 $ gem install gauntlt
 		    </code></pre>
 		  </li>
-		
+
 		  <li>
 		    <p>Download <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">example attacks</a> and customize.  Here is a very simple network attack using the nmap adapter.</p>
 
-		<pre><code>
-# nmap-simple.attack
-Feature: simple nmap attack (sanity check)
+    <script src="https://gist.github.com/4006251.js?file=gistfile1.feature"></script>
 
-  Background:
-    Given "nmap" is installed
-    And the following profile:
-      | name | value |
-      | hostname | example.com |
-
-  Scenario: Verify server is available on standard web ports
-    When I launch an "nmap" attack with:
-      """
-      nmap -p 80 <hostname>
-      """
-    Then the output should contain:
-      """
-      80/tcp open http
-      """
-		</code></pre>
 		</li>
 		<li>
 		<p>Run gauntlt to launch the attack defined above</p>
@@ -97,7 +79,7 @@ Feature: simple nmap attack (sanity check)
 $ gauntlt
   # equivalent to gauntlt ./**/*.attack
   # you can also specify one or more paths yourself:
-$ gauntlt my_attacks/nmap-simple.attack 
+$ gauntlt my_attacks/nmap-simple.attack
   # other commands to help
 $ gauntlt --list
 $ gauntlt --help
@@ -121,7 +103,7 @@ $ gauntlt --help
 		       </param>
 		       <embed src="http://www.youtube.com/v/hMpVQKcyGSE&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed>
 		    </object>
-                  </p>          
+                  </p>
                </div>
             </div>
 
@@ -130,7 +112,7 @@ $ gauntlt --help
                   <h4>Did we mention the gauntlt mailing list?</h4>
                   <p>Stay in the loop with the latest news and updates for gauntlt.</p>
                   <br>
-                  <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a> 
+                  <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a>
                </div>
             </div>
 
