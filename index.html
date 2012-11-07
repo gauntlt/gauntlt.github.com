@@ -82,7 +82,7 @@ Feature: simple nmap attack (sanity check)
   Scenario: Check standard web ports
     When I launch an "nmap" attack with:
       """
-      nmap -p 80 <hostname>
+      nmap -p 80 \<hostname\>
       """
     Then the output should contain:
       """
