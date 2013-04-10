@@ -44,15 +44,13 @@ title: GAUNTLT - Go Ahead, Be Mean To Your Code - Security and Rugged Testing
             <div class="span4">
                <div class="well">
                   <h4>Join the community</h4>
-                  <p>There are several ways to stay plugged in with gauntlt:
+                  <p>There are several ways to get involved:
 				     <ul>
-					   <li><a href="https://groups.google.com/d/forum/gauntlt">gauntlt Google Group</a></li>
-					   <li>#gauntlt on freenode IRC</li>
-					   <li>github: <a href="https://github.com/gauntlt/gauntlt">github.com/gauntlt</a></li>
+					   <li><a href="https://groups.google.com/d/forum/gauntlt">Google Group for gauntlt</a></li>
+					   <li>IRC: #gauntlt on freenode</li>
+					   <li><a href="https://github.com/gauntlt">Github organization</a></li>
 				     </ul>
 				  </p>
-                  <br>
-                  <a class="btn btn-large btn-primary" href="https://groups.google.com/d/forum/gauntlt"><span class="btn-label">Sign Up Today!</span></a>
                </div>
             </div>
          </div>
@@ -67,7 +65,7 @@ title: GAUNTLT - Go Ahead, Be Mean To Your Code - Security and Rugged Testing
 		<ol>
 		  <li>
 		    <p>Install the gem</p>
-		    <pre><code>
+		    <pre class="sh_gherkin_en"><code>
 $ gem install gauntlt
 		    </code></pre>
 		  </li>
@@ -75,7 +73,7 @@ $ gem install gauntlt
 		  <li>
 		    <p>Download <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">example attacks</a> and customize.  Here is a very simple network attack using the nmap adapter.</p>
 
- <pre class="sh_gherkin_en">
+ <pre class="sh_gherkin_en"><code>
 # nmap-simple.attack
 Feature: simple nmap attack (sanity check)
 
@@ -94,13 +92,13 @@ Feature: simple nmap attack (sanity check)
       """
       80/tcp open http
       """
- </pre>
+</code></pre>
 		  </li>
 
     <li>
 		<p>Run gauntlt to launch the attack defined above</p>
 
-		<pre><code>
+		<pre class="sh_gherkin_en"><code>
 $ gauntlt
   # equivalent to gauntlt ./**/*.attack
   # you can also specify one or more paths yourself:
@@ -133,14 +131,12 @@ $ gauntlt --help
             </div>
 
             <div class="span6">
-               <div class="well">
-                  <h4>Did we mention the gauntlt mailing list?</h4>
-                  <p>Stay in the loop with the latest news and updates for gauntlt.</p>
-                  <br>
-                  <a class="btn btn-large btn-primary" href="sign-up.html"><span class="btn-label">Sign Up Today!</span></a>
-               </div>
+               <div class="tweet"></div>
             </div>
 
          </div>
 
          <p class="text-info lead">Security testing is usually done on the auditors' schedule and that testing output isn't always actionable. Because of this, often regressions for fixed issues find their way back into the code. Thats not good. It should be different.</p>
+
+
+		 
