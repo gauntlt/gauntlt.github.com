@@ -73,9 +73,9 @@ $ gem install gauntlt
 		  <li>
 		    <p>Download <a href="https://github.com/gauntlt/gauntlt/tree/master/examples">example attacks</a> and customize.  Here is a very simple network attack using the nmap adapter.</p>
 
- <pre class="sh_gherkin_en"><code>
+<pre class="sh_gherkin_en"><code>
 # nmap-simple.attack
-Feature: simple nmap attack (sanity check)
+Feature: simple nmap attack to check for open ports
 
   Background:
     Given "nmap" is installed
@@ -86,12 +86,10 @@ Feature: simple nmap attack (sanity check)
   Scenario: Check standard web ports
     When I launch an "nmap" attack with:
       """
-      nmap -p 80 &lt;hostname&gt;
+      nmap -F &lt;hostname&gt;
       """
-    Then the output should contain:
-      """
-      80/tcp open http
-      """
+    Then the output should contain "80/tcp   open"
+    Then the output should not contain "25/tcp   open"
 </code></pre>
 		  </li>
 
@@ -131,7 +129,7 @@ $ gauntlt --help
             </div>
 
             <div class="span6">
-               <div class="tweet"></div>
+               <div class="tweet"> twitter feed</div>
             </div>
 
          </div>
