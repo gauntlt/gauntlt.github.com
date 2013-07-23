@@ -88,8 +88,8 @@ Feature: simple nmap attack to check for open ports
       """
       nmap -F &lt;hostname&gt;
       """
-    Then the output should contain "80/tcp   open"
-    Then the output should not contain "25/tcp   open"
+    Then the output should contain "80/tcp  open"
+    Then the output should not contain "25/tcp  open"
 </code></pre>
 		  </li>
 
@@ -103,6 +103,11 @@ $ gauntlt
 $ gauntlt my_attacks/nmap-simple.attack
   # other commands to help
 $ gauntlt --list
+  # the list option will show you the tools that are available to use with gauntlt
+$ gauntlt --steps
+  # the steps option will show the gauntlt specific steps you can use in your attacks
+$ gauntlt --allsteps
+  # the allsteps option will show all steps including aruba file operations and parsing steps that are available to use in attacks
 $ gauntlt --help
 		</code></pre>
 
